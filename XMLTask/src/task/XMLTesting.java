@@ -49,9 +49,6 @@ public class XMLTesting {
                                             requiredNode.getAttributes().getNamedItem("namespace")
                                                     .getNodeValue().equals("osgi.bundle")) {
 
-                                        System.out.print("--");
-                                        System.out.println(requiredNode.getAttributes().getNamedItem("name").getNodeValue());
-
                                         if (!requiredNode.getAttributes().getNamedItem("name")
                                                 .getNodeValue().equals("org.eclipse.equinox.p2.director")) {
                                             System.out.print("--");
