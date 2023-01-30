@@ -3,6 +3,7 @@ package task;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import java.util.Scanner;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -15,6 +16,11 @@ public class XMLTesting {
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
             Document doc = builder.parse(xmlContent);
+            Scanner sc = new Scanner(System.in);
+            
+            // User input to search id
+            System.out.println("Enter unit id:");
+            String input = sc.nextLine();
 
             // Getting all units
             NodeList unitList = doc.getElementsByTagName("unit");
@@ -24,7 +30,7 @@ public class XMLTesting {
 
                 // Getting units with specified id
                 if (unitNode.getAttributes().getNamedItem("id")
-                        .getNodeValue().equals("org.eclipse.equinox.p2.director")) {
+                        .getNodeValue().equals(input)) {
                     NodeList childrenList = unitNode.getChildNodes();
 
                     System.out.println(unitNode.getAttributes().getNamedItem("id").getNodeValue());
@@ -50,7 +56,7 @@ public class XMLTesting {
                                                     .getNodeValue().equals("osgi.bundle")) {
 
                                         if (!requiredNode.getAttributes().getNamedItem("name")
-                                                .getNodeValue().equals("org.eclipse.equinox.p2.director")) {
+                                                .getNodeValue().equals(input)) {
                                             System.out.print("--");
                                             System.out.println(requiredNode.getAttributes().getNamedItem("name").getNodeValue());
                                         }
